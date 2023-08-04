@@ -1,0 +1,84 @@
+/* Parent container for the card. set width and height of full card. */
+.flip-card {
+  background-color: transparent;
+  width: 10rem;
+  height: 10rem;
+  perspective: 1000px;
+  border: none;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+.clicked .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  font-size: 3rem;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card:focus, .card-inner:focus {
+  border: none;
+}
+
+/* Style the back side */
+.card-back {
+  background-color: #bbb;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.icon {
+  height: 6rem;
+  object-fit: cover;
+}
+
+.b1glogo {
+  width: 8rem;
+  object-fit: cover;
+}
+
+.hidden {
+    animation: disappear 500ms ease-in forwards;
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+}
